@@ -3,8 +3,9 @@ require_once('fastdfs.php');
 
 $fdfs = new FDFS();
 
-$localfile = 'test.json';
-$fileinfo = $fdfs->upload($localfile,'json');
+
+$localfile = $_GET['fname']?$_GET['fname']:'001';
+$fileinfo = $fdfs->upload('upload/'.$localfile,'');
 
 if ($fileinfo) {
   // update file info in the database etc
