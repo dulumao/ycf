@@ -71,4 +71,8 @@ class Fdfs {
     public function closs(){
         $this->fdfs->tracker_close_all_connections();
     }
+
+    public function info(){
+        var_dump($this->fdfs,$this->tracker,$this->storage,$this->server);
+    }
 }
