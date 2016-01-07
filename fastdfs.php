@@ -67,4 +67,8 @@ class Fdfs {
     public function get_file_info($group_name, $remote_filename) {
         return $this->fdfs->get_file_info($group_name, $remote_filename);
     }
+
+    public function closs(){
+        $this->fdfs->tracker_close_all_connections();
+    }
 }
