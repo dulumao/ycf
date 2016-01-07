@@ -28,9 +28,7 @@ class Fdfs {
    
     public function upload($localfile, $ext_name) {
         
-        var_dump($this->tracker, $this->storage, $this->server);
-        $info = $this->fdfs->storage_upload_by_filename($localfile);
-        var_dump($info);exit;
+        //$info = $this->fdfs->storage_upload_by_filename($localfile);
         $info = $this->fdfs->storage_upload_by_filename($localfile, $ext_name, 
             array(), null, $this->tracker, $this->storage);
         if (is_array($info)) {
