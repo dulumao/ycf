@@ -3,7 +3,7 @@ require_once('fastdfs.php');
 
 $fdfs = new FDFS();
 
-$localfile = './test.xml';
+$localfile = 'test.xml';
 $fileinfo = $fdfs->upload($localfile,'xml');
 
 if ($fileinfo) {
