@@ -9,7 +9,7 @@ $fileinfo = $fdfs->upload('upload/'.$localfile,'');
 
 
 if ($fileinfo) {
-    $fdfs->download_to_buff($fileinfo['group_name',$fileinfo['remote_filename']);
+    $fdfs->download_to_buff($fileinfo['group_name'],$fileinfo['remote_filename']);
     echo 'true';
 }else{
     echo 'false';

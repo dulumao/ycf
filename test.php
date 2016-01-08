@@ -8,7 +8,7 @@ $localfile = $_GET['fname']?$_GET['fname']:'001';
 $fileinfo = $fdfs->upload('upload/'.$localfile,'');
 
 if ($fileinfo) {
-    $result=$fdfs->download_to_buff($fileinfo['group_name',$fileinfo['remote_filename']);
+    $result=$fdfs->download_to_buff($fileinfo['group_name'],$fileinfo['remote_filename']);
     var_dump($result);
     //update file info in the database etc
 }else{
