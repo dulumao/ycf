@@ -75,4 +75,9 @@ class Fdfs {
     public function info(){
         var_dump($this->fdfs,$this->tracker,$this->storage,$this->server);
     }
+
+    public function getError(){
+        $retData = array('retCode'=>$this->fdfs->get_last_error_no(),'errMsg'=>$this->fdfs->get_last_error_info());
+        return $retData;
+    }
 }
