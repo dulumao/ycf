@@ -6,7 +6,7 @@ $fdfs = new FDFS();
 
 $localfile = $_GET['fname']?$_GET['fname']:'001';
 $fileinfo = $fdfs->upload('upload/'.$localfile,'');
-$fdfs->closs();//一定要释放连接
+
 if ($fileinfo) {
   // update file info in the database etc
 }else{
@@ -14,4 +14,4 @@ if ($fileinfo) {
 }
 
 var_dump($fileinfo);
-
+$fdfs->closs();//一定要释放连接
