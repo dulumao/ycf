@@ -9,7 +9,7 @@ $fileinfo = $fdfs->upload('upload/'.$localfile,'');
 
 if ($fileinfo) {
     $result=$fdfs->download_to_buff($fileinfo['group_name'],$fileinfo['remote_filename']);
-    var_dump($result);
+    var_dump("file size is : ".strlen($result));
     //update file info in the database etc
 }else{
     var_dump($fdfs->getError());
