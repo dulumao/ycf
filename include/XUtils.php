@@ -18,4 +18,13 @@ class XUtils {
         fwrite($fp2, date('Y-m-d H:i:s') . '  ' . $errmsg . "\r\n");
         fclose($fp2);
     }
+
+    /**
+     * 获得来源类型 post get
+     *
+     * @return unknown
+     */
+    static public function method() {
+        return strtoupper(isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET' );
+    }
 }
