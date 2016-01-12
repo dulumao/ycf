@@ -35,4 +35,8 @@ class YcfUpload{
 
     }
 
+    public function actionHello(){
+        echo 'hello fastdfs';
+    }
+
 }
