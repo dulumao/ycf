@@ -1,5 +1,5 @@
 <?php
-require_once('fastdfs.php');
+require_once('../include/fastdfs.php');
 
 $fdfs = new FDFS();
 

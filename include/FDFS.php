@@ -1,6 +1,6 @@
 <?php
-// fastdfs.php
-class Fdfs {
+// Fdfs.php
+class FDFS {
     private $fdfs, $tracker, $storage;
     public function __construct() {
         $this->fdfs = new FastDFS();

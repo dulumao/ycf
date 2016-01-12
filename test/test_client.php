@@ -1,6 +1,6 @@
 <?php
 
-require_once('FDFSClientLib.php');
+require_once('../include/FDFSClientLib.php');
 
 $publicFDFSClient= new publicFDFSClient();
 
