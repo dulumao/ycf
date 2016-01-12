@@ -8,7 +8,7 @@ spl_autoload_register(function ($name) {
 });
 
 $action=isset($_REQUEST['action'])?$_REQUEST['action']:'hello';
-
-if(method_exists('YcfUpload','action'.ucfirst($action))){
-    YcfUpload::$action();
+$action_name='action'.ucfirst($action))
+if(method_exists('YcfUpload',$action_name)){
+    YcfUpload::$action_name();
 } 
