@@ -30,3 +30,4 @@ class XUtils {
         fwrite($fp2, date('Y-m-d H:i:s') . '  ' . $errmsg . "\r\n");
         fclose($fp2);
     }
+}
