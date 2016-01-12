@@ -1,8 +1,7 @@
 ## fastdfs_upload
 
-========
 
-* a simple php framework  with fastdfs
+* a simple php framework  for fastdfs
 
 
 ## Requirements
@@ -14,6 +13,7 @@
 
 ## Installation 
 1. Installation fastdfs,refer to 
+
    https://github.com/xikai/fastdfs/blob/master/INSTALL
     
 2. Install PHP extension,refer to
@@ -27,7 +27,7 @@
 3. Open your browser and enter http://youhost/test/index.php
 
 ## Beanchmarks
-1. ab -c100 -n100 http://yourhost/ycf_fastdfs/test/test.php?fname=001
+1. ab -c100 -n100 "http://yourhost/ycf_fastdfs/test/test.php?fname=001"
 2. fname param can set 001,002,003,004;it's different file size to beanchmark
 
 ##Thanks
