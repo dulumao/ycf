@@ -1,5 +1,5 @@
 <?php
-// Fdfs.php
+//FastDFS封装类
 class FDFS {
     private $fdfs, $tracker, $storage;
     public function __construct() {

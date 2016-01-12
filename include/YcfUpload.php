@@ -1,4 +1,9 @@
 <?php
+/**
+ * 业务封装类
+ * 
+ *
+ */
 class YcfUpload{
     public static function actionUpload(){
 
