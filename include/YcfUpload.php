@@ -18,7 +18,7 @@ class YcfUpload {
                     $log_ms.= "Type: " . $_FILES["file"]["type"] . "<br />";
                     $log_ms.= "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
                     $log_ms.= "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
-                    $origin_file_name = $_FILES["file"]["name"];
+                    $origin_file_name = $_FILES["file"]["tmp_name"];
                     //FileFilter::checkExtensinName($_FILES["file"]);
                     $fileinfo = $fdfs->upload($origin_file_name,'');
 
