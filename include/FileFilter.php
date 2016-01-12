@@ -12,6 +12,7 @@ class FileFilter{
                 return false;                
             }
         }
+        return true;
     }
 
 }
