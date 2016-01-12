@@ -36,7 +36,7 @@ class YcfUpload {
                     $fdfs->closs();
             }
         }else{
-            die(json_encode('code'=>'001','message'=>'no file input','content'=>''));
+            die(json_encode(array('code'=>'001','message'=>'no file input','content'=>'')));
         }
 
     }
