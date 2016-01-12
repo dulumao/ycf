@@ -13,7 +13,7 @@ class YcfUpload {
                     $log_ms.= "Return Code: " . $_FILES["file"]["error"] . "<br />";
             }
             else {
-                    if(!FileFilter::checkExtensinName($_FILES["file"])){
+                    if(!FileFilter::checkExtName($_FILES["file"])){
                         echo json_encode(array('code'=>501,'message'=>FileFilter::$error));
                         return;
                     }
