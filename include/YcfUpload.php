@@ -10,7 +10,7 @@ class YcfUpload {
         $fdfs = new FDFS();
         if (XUtils::method() == 'POST' && isset($_FILES["file"]) && !empty($_FILES["file"])) {
             if ($_FILES["file"]["error"] > 0) {
-                    $log_ms.= "Return Code: " . $_FILES["file"]["error"] . "<br />";
+                    $log_ms.= "Return Code: " . $_FILES["file"]["error"] . "\r\n";
             }
             else {
                     $extensin_name=FileFilter::getExt($_FILES["file"]["name"]);
@@ -19,10 +19,10 @@ class YcfUpload {
                         return;
                     }
 
-                    $log_ms.= "Upload: " . $_FILES["file"]["name"] . "<br />";
-                    $log_ms.= "Type: " . $_FILES["file"]["type"] . "<br />";
-                    $log_ms.= "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-                    $log_ms.= "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+                    $log_ms.= "Upload: " . $_FILES["file"]["name"] . "\r\n";
+                    $log_ms.= "Type: " . $_FILES["file"]["type"] . "\r\n";
+                    $log_ms.= "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb\r\n";
+                    $log_ms.= "Temp file: " . $_FILES["file"]["tmp_name"] . "\r\n";
                     $origin_file_name = $_FILES["file"]["tmp_name"];
 
 
@@ -34,9 +34,9 @@ class YcfUpload {
                         //var_dump($result);
                         //update file info in the database etc
                     }else{
-                        $log_ms.="Get error: ".serialize($fdfs->getError()). "<br />";
+                        $log_ms.="Get error: ".serialize($fdfs->getError()). "\r\n";
                     }
-                    $log_ms.="Result: ".serialize($fileinfo). "<br />";
+                    $log_ms.="Result: ".serialize($fileinfo). "\r\n";
                     XUtils::log($log_ms,'upload');
                     //一定要释放连接
                     $fdfs->closs();

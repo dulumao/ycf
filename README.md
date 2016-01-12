@@ -1,4 +1,4 @@
-fastdfs_upload
+## fastdfs_upload
 
 ========
 
@@ -23,7 +23,8 @@ fastdfs_upload
 ## How to run
 
 1. git clone https://github.com/kcloze/fastdfs_upload.git
-2. Open your browser and enter http://youhost/test/index.php
+2. chown -R www:www runtime/
+3. Open your browser and enter http://youhost/test/index.php
 
 ## Beanchmarks
 1. ab -c100 -n100 http://yourhost/ycf_fastdfs/test/test.php?fname=001
