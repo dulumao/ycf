@@ -30,7 +30,7 @@ class YcfUpload {
 
                     if ($fileinfo) {
                         $fileinfo['remote_url']=$fileinfo['group_name'].'/'.$fileinfo['remote_filename'];
-                        echo json_encode(array('code'=>100,'message'=>'success','content'=>$fileinfo));
+                        echo json_encode(array('code'=>200,'message'=>'success','content'=>$fileinfo));
                         //$result=$fdfs->download_to_buff($fileinfo['group_name'],$fileinfo['remote_filename']);
                         //var_dump($result);
                         //update file info in the database etc
