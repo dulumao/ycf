@@ -13,7 +13,7 @@ class YcfUpload {
                     $log_ms.= "Return Code: " . $_FILES["file"]["error"] . "\r\n";
             }
             else {
-                    $extensin_name=FileFilter::getExt($_FILES["file"]["name"]);
+                    $ext_name=FileFilter::getExt($_FILES["file"]["name"]);
                     if(!FileFilter::checkExtName($_FILES["file"])){
                         echo json_encode(array('code'=>501,'message'=>FileFilter::$error));
                         return;
@@ -26,10 +26,10 @@ class YcfUpload {
                     $origin_file_name = $_FILES["file"]["tmp_name"];
 
 
-                    $fileinfo = $fdfs->upload($origin_file_name,$extensin_name);
+                    $fileinfo = $fdfs->upload($origin_file_name,$ext_name);
 
                     if ($fileinfo) {
-                        $fileinfo['extensin_name']=$extensin_name;
+                        $fileinfo['ext_name']=$ext_name;
                         $fileinfo['remote_url']=$fileinfo['group_name'].'/'.$fileinfo['remote_filename'];
                         echo json_encode(array('code'=>200,'message'=>'success','content'=>$fileinfo));
                         //$result=$fdfs->download_to_buff($fileinfo['group_name'],$fileinfo['remote_filename']);
