@@ -12,5 +12,5 @@ $ctr_name=isset($_REQUEST['ctr'])?$_REQUEST['ctr']:'YcfUpload';
 $action_name='action'.ucfirst($action);
 
 if(method_exists($ctr_name,$action_name)){
-    YcfUpload::$action_name();
+    $ctr_name::$action_name();
 } 
