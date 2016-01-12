@@ -28,7 +28,7 @@ class YcfUpload {
                     $log_ms.="Get error: ".serialize($fdfs->getError()). "<br />";
                 }
                 $log_ms.="Result: ".serialize($fileinfo). "<br />";
-                XUtils::log($log_ms,'upload')
+                XUtils::log($log_ms,'upload');
                 //一定要释放连接
                 $fdfs->closs();
         }

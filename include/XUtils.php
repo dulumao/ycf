@@ -6,19 +6,7 @@
  *
  */
 class XUtils {
-    /**
-     * 注册类库载入路径
-     */
-    static public function spl_autoload_register()
-    {
-        spl_autoload_register(function ($name) {
-            $file_path = ROOT_PATH . "include" . DS . $name . ".php";
-            if(!file_exists($file_path)){
-                die('class no exits');
-            }
-            include $file_path;
-        });
-    }
+
     /**
      * 
      * 写日志
