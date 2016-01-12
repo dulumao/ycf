@@ -1,7 +1,13 @@
 <?php
-XUtils::spl_autoload_register();
+spl_autoload_register(function ($name) {
+            $file_path = ROOT_PATH . "include" . DS . $name . ".php";
+            if(!file_exists($file_path)){
+                die('class no exits');
+            }
+            include $file_path;
+});
 
-$action=$_REQUEST['action']?$_REQUEST['action']:'hello';
+$action=isset($_REQUEST['action'])?$_REQUEST['action']:'hello';
 
 if(method_exists('YcfUpload','action'.ucfirst($action))){
     YcfUpload::$action();

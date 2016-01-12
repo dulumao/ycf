@@ -4,7 +4,7 @@
  * 
  *
  */
-class YcfUpload{
+class YcfUpload {
     public static function actionUpload(){
 
         $fdfs = new FDFS();
