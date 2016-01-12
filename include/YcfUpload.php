@@ -23,7 +23,7 @@ class YcfUpload {
                     $fileinfo = $fdfs->upload($origin_file_name,'');
 
                     if ($fileinfo) {
-                        die(json_encode(array('code'=>'100','message'=>'success','content'=>$fileinfo)));
+                        die(json_encode(array('code'=>100,'message'=>'success','content'=>$fileinfo)));
                         //$result=$fdfs->download_to_buff($fileinfo['group_name'],$fileinfo['remote_filename']);
                         //var_dump($result);
                         //update file info in the database etc
@@ -36,13 +36,13 @@ class YcfUpload {
                     $fdfs->closs();
             }
         }else{
-            die(json_encode(array('code'=>'001','message'=>'no file input','content'=>'')));
+            die(json_encode(array('code'=>1,'message'=>'no file input','content'=>'')));
         }
 
     }
 
     public static function actionHello(){
-        die(json_encode(array('code'=>'100','message'=>'hello fastdfs','content'=>'hello ycf')));
+        die(json_encode(array('code'=>100,'message'=>'hello fastdfs','content'=>'hello ycf')));
     }
 
 }
