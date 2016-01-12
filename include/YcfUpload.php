@@ -8,7 +8,7 @@ class YcfUpload {
     public static function actionUpload(){
 
         $fdfs = new FDFS();
-        if (XUtils::method() == 'POST' && isset($_FILES["file"])) {
+        if (XUtils::method() == 'POST' && isset($_FILES["file"]) && !empty($_FILES["file"])) {
             if ($_FILES["file"]["error"] > 0) {
                     echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
             }
@@ -23,7 +23,7 @@ class YcfUpload {
                     $fileinfo = $fdfs->upload($origin_file_name,'');
 
                     if ($fileinfo) {
-                        die(json_encode('code'=>'100','message'=>'success','content'=>$fileinfo));
+                        die(json_encode(array('code'=>'100','message'=>'success','content'=>$fileinfo)));
                         //$result=$fdfs->download_to_buff($fileinfo['group_name'],$fileinfo['remote_filename']);
                         //var_dump($result);
                         //update file info in the database etc
@@ -42,7 +42,7 @@ class YcfUpload {
     }
 
     public static function actionHello(){
-        die(json_encode('code'=>'100','message'=>'hello fastdfs','content'=>'hello ycf'));
+        die(json_encode(array('code'=>'100','message'=>'hello fastdfs','content'=>'hello ycf')));
     }
 
 }
