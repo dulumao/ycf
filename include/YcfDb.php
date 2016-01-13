@@ -4,7 +4,7 @@ class YcfDb{
 
     private static function getDbInstance(){
         if(self::$db==''){
-            self::$db=new Db();
+            self::$db=new DB();
         }
         return self::$db;
     }

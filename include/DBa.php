@@ -7,7 +7,7 @@
  * @version      0.2ab
  *
  */
-class DB
+class DBa
 {
 	# @object, The PDO object
 	private $pdo;
