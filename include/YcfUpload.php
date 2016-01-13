@@ -56,7 +56,7 @@ class YcfUpload {
                                     $tags['tagValue']=$value;
                                     $tags['fileId']=$fileId;
                                     //插入文件tag信息
-                                    Ycf::insertTag($tags);
+                                    YcfDb::insertTag($tags);
                                 }
                                 
                             }

@@ -2,7 +2,7 @@
 spl_autoload_register(function ($name) {
             $file_path = ROOT_PATH . "include" . DS . $name . ".php";
             if(!file_exists($file_path)){
-                die('class no exits');
+                die('class no exits: '.$file_path);
             }
             include $file_path;
 });
