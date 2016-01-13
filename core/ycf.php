@@ -11,7 +11,7 @@ spl_autoload_register(function ($name) {
 });
 
 /**
-*cli use this:  /opt/php7/bin/php index.php ctr=YcfPdo act=test
+*cli use this:  /opt/php7/bin/php index.php ycf=YcfPdo act=test
 *
 */
 if(php_sapi_name()=="cli"){

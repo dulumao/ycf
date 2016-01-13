@@ -14,8 +14,8 @@ class YcfUtils {
     static public function log($errmsg, $fileName) {
         $path = ROOT_PATH. '/runtime/';
         $filename = $path . $fileName . '.log';
-        $fp2 = @fopen($filename, "a");
-        fwrite($fp2, date('Y-m-d H:i:s') . '  ' . $errmsg . "\r\n");
+        $fp2 = fopen($filename, "a+") or die("Log fatal Error !");
+        fwrite($fp2, "Time: ".date('Y-m-d H:i:s') . '  ' . $errmsg . "\r\n");
         fclose($fp2);
     }
 

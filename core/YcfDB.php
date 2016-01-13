@@ -258,7 +258,7 @@ class YcfDB
 			$message .= "\r\nRaw SQL : "  . $sql;
 		}
 			# Write into log
-			XUtils::log($message,'db');
+			YcfUtils::log($message,'db');
 
 		return $exception;
 	}			
