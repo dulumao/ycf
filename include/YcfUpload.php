@@ -25,7 +25,8 @@ class YcfUpload {
                     $log_ms.= "Temp file: " . $_FILES["file"]["tmp_name"] . "\r\n";
                     $origin_file_name = $_FILES["file"]["tmp_name"];
 
-
+                    XUtils::log($log_ms,'upload');
+                    $log_ms='';
                     $fileinfo = $fdfs->upload($origin_file_name,$ext_name);
 
                     if ($fileinfo) {
@@ -46,6 +47,8 @@ class YcfUpload {
                         $data_file['fileWidth']=FileFilter::$width;
                         $data_file['fileHeight']=FileFilter::$height;
                         $data_file['privateState']=isset($_REQUEST['dfsPrivate'])?$_REQUEST['dfsPrivate']:1;
+                        XUtils::log(serailize($data_file),'upload');
+                        $log_ms='';
                         //插入文件信息表
                         $fileId=YcfDb::insertFileInfo($data_file);
                         if($fileId && isset($_REQUEST['dfsTag'])){
@@ -63,7 +66,7 @@ class YcfUpload {
                         }
 
                     }else{
-                        $log_ms.="Get error: ".serialize($fdfs->getError()). "\r\n";
+                        $log_ms="Get error: ".serialize($fdfs->getError()). "\r\n";
                     }
                     $log_ms.="Result: ".serialize($fileinfo). "\r\n";
                     XUtils::log($log_ms,'upload');
