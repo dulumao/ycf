@@ -3,6 +3,9 @@ class FileFilter{
 
     public static $error='';
     public static $extensin_name='';
+    public static $width='';
+    public static $height='';
+
 
     /**
      * 取得上传文件的后缀
@@ -25,6 +28,9 @@ class FileFilter{
             if(false === $info || ('gif' == strtolower($file['extension']) && empty($info['bits']))){
                 self::$error = '非法图像文件';
                 return false;                
+            }else{
+                isset($info[0]) &&　self::$width=$info[0];
+                isset($info[1]) &&　self::$height=$info[1];
             }
         }
         return true;

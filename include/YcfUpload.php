@@ -33,8 +33,35 @@ class YcfUpload {
                         $fileinfo['remote_url']=$fileinfo['group_name'].'/'.$fileinfo['remote_filename'];
                         echo json_encode(array('code'=>200,'message'=>'success','content'=>$fileinfo));
                         //$result=$fdfs->download_to_buff($fileinfo['group_name'],$fileinfo['remote_filename']);
-                        //var_dump($result);
                         //update file info in the database etc
+                        //url,productId,createTime,state,privateState,cityCode,realName,extName,fileSize,fileWidth,fileHeight
+                        $data_file['url']=$fileinfo['remote_url'];
+                        $data_file['productId']=isset($_REQUEST['productId'])?$_REQUEST['productId']:0;
+                        $data_file['createTime']=time();
+                        $data_file['cityCode']=isset($_REQUEST['cityCode'])?$_REQUEST['cityCode']:'000000';
+                        $data_file['realName']=$_FILES["file"]["name"];
+                        $data_file['extName']=$fileinfo['ext_name'];
+                        $data_file['fileSize']=$fileinfo['file_size'];
+                        $data_file['fileSize']=$fileinfo['file_size'];
+                        $data_file['fileWidth']=FileFilter::$width;
+                        $data_file['fileHeight']=FileFilter::$height;
+                        $data_file['privateState']=isset($_REQUEST['dfsPrivate'])?$_REQUEST['dfsPrivate']:1;
+                        //插入文件信息表
+                        $fileId=YcfDb::insertFileInfo($data_file);
+                        if($fileId && isset($_REQUEST['dfsTag'])){
+                            $data_tag=json_decode($_REQUEST['dfsTag']);
+                            if(!empty($data_tag)){
+                                foreach ((array)$data_tag as $key => $value) {
+                                    $tags['tagKey']=$key;
+                                    $tags['tagValue']=$value;
+                                    $tags['fileId']=$fileId;
+                                    //插入文件tag信息
+                                    Ycf::insertTag($tags);
+                                }
+                                
+                            }
+                        }
+
                     }else{
                         $log_ms.="Get error: ".serialize($fdfs->getError()). "\r\n";
                     }
@@ -55,5 +82,6 @@ class YcfUpload {
         echo json_encode(array('code'=>100,'message'=>'hello fastdfs','content'=>'hello ycf'));
         return;
     }
+
 
 }

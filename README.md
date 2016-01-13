@@ -1,7 +1,7 @@
 ## fastdfs_upload
 
 
-* a simple php framework  for fastdfs
+* a simple php framework  for fastdfs,be right for unify upload api 
 
 
 ## Requirements
