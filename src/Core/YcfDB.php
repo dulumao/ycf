@@ -11,7 +11,6 @@ namespace Ycf\Core;
 
 use PDO;
 use PDOException;
-use Ycf\Core\YcfCore;
 
 class YcfDB {
 	# @object, The PDO object

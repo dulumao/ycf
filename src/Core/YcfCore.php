@@ -21,7 +21,7 @@ class YcfCore {
 
 	static public function run() {
 		/**
-		 *cli use this:  /opt/php7/bin/php index.php ycf=YcfPdo act=test
+		 *cli use this:  /opt/php7/bin/php index.php ycf=Pdo act=test
 		 *
 		 */
 		if (php_sapi_name() == "cli") {
