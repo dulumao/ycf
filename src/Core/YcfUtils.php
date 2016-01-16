@@ -14,7 +14,7 @@ class YcfUtils {
 	 * 写日志
 	 */
 	static public function log($errmsg, $fileName) {
-		$path = ROOT_PATH . '/runtime/';
+		$path = ROOT_PATH . '/src/runtime/';
 		$filename = $path . $fileName . '.log';
 		$fp2 = fopen($filename, "a+") or die("Log fatal Error !");
 		fwrite($fp2, "Time: " . date('Y-m-d H:i:s') . '  ' . $errmsg . "\r\n");
