@@ -11,8 +11,8 @@
 
 ## Installation
 
-1. git clone https://github.com/kcloze/ycf.git
-2. composer install
+1. git clone https://github.com/kcloze/ycf.git your-app
+2. cd your-app and run: composer install
 3. cd src/runtime and chmod -R 777 runtime/
 4. edit src/settings.ini.php for mysql config
 
