@@ -3,7 +3,9 @@
 namespace Ycf\Core;
 
 /**
- * Class for redis client
+ * Simple wrapper class on phpredis extension
+ * refer to: https://github.com/alxmsl/Redis
+ *
  */
 class YcfRedis {
 	/**

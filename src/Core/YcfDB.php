@@ -2,9 +2,9 @@
 /**
  *  DB - A simple database class
  *
- * @author		Author: Vivek Wicky Aswal. (https://twitter.com/#!/VivekWickyAswal)
- * @git 		https://github.com/indieteq/PHP-MySQL-PDO-Database-Class
- * @version      0.2ab
+ * refer to:
+ * https://github.com/indieteq/PHP-MySQL-PDO-Database-Class
+ *
  *
  */
 namespace Ycf\Core;
