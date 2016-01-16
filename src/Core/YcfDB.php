@@ -9,12 +9,11 @@
  */
 namespace Ycf\Core;
 
-use PDO;
-use PDOException;
-
 class YcfDB {
 	# @object, The PDO object
 	private $pdo;
+
+	private $config = array();
 
 	# @object, PDO statement object
 	private $sQuery;
@@ -38,8 +37,8 @@ class YcfDB {
 	 *	2. Connect to database.
 	 *	3. Creates the parameter array.
 	 */
-	public function __construct() {
-		//$this->log = new Log();
+	public function __construct($config) {
+		$this->config = $config;
 		$this->Connect();
 		$this->parameters = array();
 	}
@@ -53,21 +52,21 @@ class YcfDB {
 	 *	4. If connection failed, exception is displayed and a log file gets created.
 	 */
 	private function Connect() {
-		$dsn = 'mysql:dbname=' . YcfCore::$_settings["dbname"] . ';host=' . YcfCore::$_settings["host"] . '';
+		$dsn = 'mysql:dbname=' . $this->config["dbname"] . ';host=' . $this->config["host"] . '';
 		try
 		{
 			# Read settings from INI file, set UTF8
-			$this->pdo = new PDO($dsn, YcfCore::$_settings["user"], YcfCore::$_settings["password"], array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+			$this->pdo = new \PDO($dsn, $this->config["user"], $this->config["password"], array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
 			# We can now log any exceptions on Fatal error.
-			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
 			# Disable emulation of prepared statements, use REAL prepared statements instead.
-			$this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+			$this->pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
 
 			# Connection succeeded, set the boolean to true.
 			$this->bConnected = true;
-		} catch (PDOException $e) {
+		} catch (\PDOException $e) {
 			# Write into log
 			echo $this->ExceptionLog($e->getMessage());
 			die();
@@ -113,7 +112,7 @@ class YcfDB {
 
 			# Execute SQL
 			$this->succes = $this->sQuery->execute();
-		} catch (PDOException $e) {
+		} catch (\PDOException $e) {
 			# Write into log and display Exception
 			echo $this->ExceptionLog($e->getMessage(), $query);
 			die();
@@ -156,7 +155,7 @@ class YcfDB {
 	 *	@param  int    $fetchmode
 	 *	@return mixed
 	 */
-	public function query($query, $params = null, $fetchmode = PDO::FETCH_ASSOC) {
+	public function query($query, $params = null, $fetchmode = \PDO::FETCH_ASSOC) {
 		$query = trim($query);
 
 		$this->Init($query, $params);
@@ -192,7 +191,7 @@ class YcfDB {
 	 */
 	public function column($query, $params = null) {
 		$this->Init($query, $params);
-		$Columns = $this->sQuery->fetchAll(PDO::FETCH_NUM);
+		$Columns = $this->sQuery->fetchAll(\PDO::FETCH_NUM);
 
 		$column = null;
 
@@ -211,7 +210,7 @@ class YcfDB {
 	 *   	@param  int    $fetchmode
 	 *	@return array
 	 */
-	public function row($query, $params = null, $fetchmode = PDO::FETCH_ASSOC) {
+	public function row($query, $params = null, $fetchmode = \PDO::FETCH_ASSOC) {
 		$this->Init($query, $params);
 		return $this->sQuery->fetch($fetchmode);
 	}

@@ -3,20 +3,47 @@
 namespace Ycf\Core;
 
 use Ycf\Core\YcfDB;
+use Ycf\Core\YcfRedis;
 
 class YcfCore {
-	static $_settings = array();
-	static $_db = '';
 
-	static function init() {
-		self::$_settings = parse_ini_file("settings.ini.php");
-		self::getDbInstance();
+	static $_settings = array();
+	static $_db = null;
+	static $_redis = null;
+
+	static function init($model = 0) {
+		self::$_settings = parse_ini_file("settings.ini.php", true);
+
+	}
+
+	static function load($_lib) {
+		switch ($_lib) {
+		case '_db':
+			return self::getDbInstance();
+			break;
+		case '_redis':
+			return self::getRedisInstance();
+			break;
+		default:
+			break;
+		}
 	}
 
 	static public function getDbInstance() {
+		// Create Mysql Client instance with you configuration settings
 		if (self::$_db == '') {
-			self::$_db = new YcfDB();
+			self::$_db = new YcfDB(self::$_settings['Mysql']);
 		}
+		return self::$_db;
+	}
+	static public function getRedisInstance() {
+		if (!extension_loaded('redis')) {
+			throw new \RuntimeException('php redis extension not found');
+			return null;
+		}
+		// Create Redis Client instance with you configuration settings
+		self::$_redis = new YcfRedis(self::$_settings['Redis']);
+		return self::$_redis;
 	}
 
 	static public function run() {
@@ -37,13 +64,14 @@ class YcfCore {
 		}
 
 		$action = isset($_REQUEST['act']) ? $_REQUEST['act'] : 'hello';
-		$ycf_name = isset($_REQUEST['ycf']) ? $_REQUEST['ycf'] : 'Hello';
-		$action_name = 'action' . ucfirst($action);
+		$ycfName = isset($_REQUEST['ycf']) ? $_REQUEST['ycf'] : 'Hello';
+		$actionName = 'action' . ucfirst($action);
 		//route to service
-		$ycf_name = "Ycf\Service\Ycf" . ucfirst($ycf_name);
-		if (method_exists($ycf_name, $action_name)) {
+		$ycfName = "Ycf\Service\Ycf" . ucfirst($ycfName);
+		if (method_exists($ycfName, $actionName)) {
 			self::init();
-			$ycf_name::$action_name();
+			$ycf = new $ycfName();
+			$ycf->$actionName();
 		} else {
 			die("action not find");
 		}

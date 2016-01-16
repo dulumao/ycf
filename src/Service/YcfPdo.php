@@ -1,23 +1,21 @@
 <?php
 namespace Ycf\Service;
 
-use Ycf\Core\YcfCore;
+use Ycf\Model\ModelTest;
 
-class YcfPdo extends YcfCore {
+class YcfPdo {
 
-	public static function actionTest() {
-		$data['pName'] = 'fww';
-		$data['pValue'] = '总过万佛无法';
-		$insert = self::$_db->query("INSERT INTO pdo_test( pName,pValue) VALUES ( :pName,:pValue)", $data);
-		if ($insert > 0) {
-			echo self::$_db->lastInsertId() . "\r\n";
-		} else {
-			echo false . "\r\n";
-		}
-	}
+	public function actionTest() {
+		$modelTest = new ModelTest();
+		$result = $modelTest->testInsert();
+		var_dump($result);
 
-	public static function query() {
-		return self::$_db->query("select  *  from pdo_test limit 10");
+		$result = $modelTest->testQuery();
+		var_dump($result);
+
+		$result = $modelTest->testRedis();
+		var_dump($result);
 
 	}
+
 }
