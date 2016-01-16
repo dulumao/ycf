@@ -9,4 +9,9 @@ class YcfHello extends YcfCore {
 		echo "hello ycf";
 	}
 
+	public static function actionShow() {
+		$result = YcfPdo::query();
+		var_dump($result);
+	}
+
 }

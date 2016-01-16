@@ -15,4 +15,9 @@ class YcfPdo extends YcfCore {
 			echo false . "\r\n";
 		}
 	}
+
+	public static function query() {
+		return self::$_db->query("select  *  from pdo_test limit 10");
+
+	}
 }
