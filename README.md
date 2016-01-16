@@ -21,9 +21,9 @@
 ## Documentation
  * in service/*,you can add your business code here
  * Naming Conventions: 
- * * service class name :YcfTest.php
- * * method name : public static function actionTest()
- * [DB](DB_README.md)
+ * ---service class name :YcfYourname.php
+ * ---method name : public static function actionYourname()
+ * [DB Class Use](DB_README.md)
 
 ## Beanchmarks
 1. ab -c100 -n1000 "http://yourhost/index.php"
