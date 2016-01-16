@@ -1,5 +1,7 @@
 <?php
 
+namespace Ycf\Core;
+
 /**
  * 系统助手类
  * 

@@ -1,4 +1,7 @@
 <?php
+namespace Ycf\Service;
+
+use Ycf\Core\YcfCore;
 
 class YcfPdo extends YcfCore{
 
