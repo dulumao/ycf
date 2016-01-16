@@ -4,12 +4,6 @@
     "keywords": ["microframework","api","cli"],
     "homepage": "https://www.kcloze.com",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "kcloze",
-            "email": "pei.greet@gmail.com"
-        },
-    ],
     "require": {
         "php": ">=5.3.0"
     },
