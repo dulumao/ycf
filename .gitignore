@@ -1,4 +1,4 @@
 /runtime
 /vendor
-/core/settings.ini.php
+/Core/settings.ini.php
 composer.lock

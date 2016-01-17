@@ -72,6 +72,7 @@ class YcfCore {
 		}
 		if (!empty($_GET["act"])) {
 			$array['action'] = $_GET["action"];
+			return $array;
 		}
 		$uri = parse_url($_SERVER['REQUEST_URI']);
 		if (empty($uri['path']) or $uri['path'] == '/' or $uri['path'] == '/index.php') {
