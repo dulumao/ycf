@@ -47,26 +47,15 @@ class YcfCore {
 	}
 
 	static public function run() {
-		/**
-		 *cli use this:  /opt/php7/bin/php index.php ycf=Pdo act=test
-		 *
-		 */
-		if (php_sapi_name() == "cli") {
-			global $argv;
-			foreach ($argv as $arg) {
-				$e = explode("=", $arg);
-				if (count($e) == 2) {
-					$_REQUEST[$e[0]] = $e[1];
-				} else {
-					$_REQUEST[$e[0]] = 0;
-				}
-			}
-		}
 
-		$router = self::route();
+		if (php_sapi_name() == "cli") {
+			$router = self::routeCli();
+		} else {
+			$router = self::route();
+		}
 		//route to service
 		$actionName = 'action' . ucfirst($router['action']);
-		$ycfName = "Ycf\Service\Ycf" . ucfirst($router['controller']);
+		$ycfName = "Ycf\Service\Ycf" . ucfirst($router['service']);
 		if (method_exists($ycfName, $actionName)) {
 			self::init();
 			$ycf = new $ycfName();
@@ -78,9 +67,9 @@ class YcfCore {
 	}
 
 	static function route() {
-		$array = array('controller' => 'Hello', 'action' => 'hello');
+		$array = array('service' => 'Hello', 'action' => 'hello');
 		if (!empty($_GET["ycf"])) {
-			$array['controller'] = $_GET["ycf"];
+			$array['service'] = $_GET["ycf"];
 		}
 		if (!empty($_GET["act"])) {
 			$array['action'] = $_GET["action"];
@@ -93,8 +82,32 @@ class YcfCore {
 		if (count($request) < 2) {
 			return $array;
 		}
-		$array['controller'] = $request[0];
+		$array['service'] = $request[0];
 		$array['action'] = $request[1];
+
+		return $array;
+	}
+	/**
+	 *cli use this:  /opt/php7/bin/php index.php ycf=Pdo act=test
+	 *
+	 */
+	static function routeCli() {
+		$array = array('service' => 'Hello', 'action' => 'hello');
+		global $argv;
+		foreach ($argv as $arg) {
+			$e = explode("=", $arg);
+			if (count($e) == 2) {
+				$_GET[$e[0]] = $e[1];
+			} else {
+				$_GET[$e[0]] = 0;
+			}
+		}
+		if (!empty($_GET["ycf"])) {
+			$array['service'] = $_GET["ycf"];
+		}
+		if (!empty($_GET["act"])) {
+			$array['action'] = $_GET["act"];
+		}
 		return $array;
 	}
 }
