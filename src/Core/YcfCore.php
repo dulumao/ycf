@@ -71,7 +71,7 @@ class YcfCore {
 			$array['service'] = $_GET["ycf"];
 		}
 		if (!empty($_GET["act"])) {
-			$array['action'] = $_GET["action"];
+			$array['action'] = $_GET["act"];
 			return $array;
 		}
 		$uri = parse_url($_SERVER['REQUEST_URI']);
