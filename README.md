@@ -16,7 +16,9 @@
 3. cd src/runtime and chmod -R 777 runtime/
 4. edit src/settings.ini.php for mysql config
 
-5.1  
+## How to run
+
+###5.1  
 run in php-fpm: Open your browser and enter http://youhost/index.php?ycf=hello&act=hello
 
 5.1.2 
@@ -31,10 +33,10 @@ if set nginx as follow,url can be simple: http://youhost/hello/hello
 
 ```
 
-5.2 
+###5.2 
 run in cli: /opt/php7/bin/php index.php ycf=hello act=hello
 
-5.3
+###5.3
 run with swoole: /opt/php7/bin/php server.php
 
 
