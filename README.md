@@ -13,7 +13,7 @@
 
 1. composer create-project --prefer-dist kcloze/ycf your-app
 2. cd src/runtime and chmod -R 777 runtime/
-3. edit src/settings.ini.php for mysql config or redis
+3. edit src/settings.ini.php for mysql config or redis,add test table(https://github.com/kcloze/ycf/blob/master/pdo_test.sql)
 
 ## How to run
 
