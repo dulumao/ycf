@@ -47,7 +47,7 @@ run in php-fpm: Open your browser and enter http://youhost/index.php?ycf=hello&a
  * [DB Class Use](DB_README.md)
  * if you need redis,shoud install phpredis extention(https://github.com/phpredis/phpredis)
 
-## Beanchmarks
+## Benchmarks
 ####1. computer info: 
 ```
 CPU(s):               2
