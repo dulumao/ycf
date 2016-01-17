@@ -54,6 +54,15 @@ CPU(s):               2
 CPU MHz：             2401.000
 Mem:                  4G
 
+fpm config:
+pm = dynamic
+pm.max_children = 150
+pm.start_servers = 20
+
+swoole config:
+worker_num=4
+max_request=1000
+
 
 2. ab -c100 -n1000 "http://yourhost/index.php"
 
