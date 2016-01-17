@@ -40,6 +40,7 @@ run in cli: /opt/php7/bin/php index.php ycf=hello act=hello
  * ---service class name :YcfYourname.php
  * ---method name : public static function actionYourname()
  * [DB Class Use](DB_README.md)
+ * if you need redis,shoud install phpredis extention(https://github.com/phpredis/phpredis)
 
 ## Beanchmarks
 1. ab -c100 -n1000 "http://yourhost/index.php"
