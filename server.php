@@ -17,9 +17,9 @@ class HttpServer {
 
 		$http->set(
 			array(
-				'worker_num' => 1,
+				'worker_num' => 4,
 				'daemonize' => false,
-				'max_request' => 1,
+				'max_request' => 1000,
 				'dispatch_mode' => 1,
 			)
 		);
@@ -27,7 +27,6 @@ class HttpServer {
 		$http->on('WorkerStart', array($this, 'onWorkerStart'));
 
 		$http->on('request', function ($request, $response) {
-			var_dump($request);
 			if (isset($request->server)) {
 				HttpServer::$server = $request->server;
 				foreach ($request->server as $key => $value) {

@@ -49,7 +49,59 @@ run in php-fpm: Open your browser and enter http://youhost/index.php?ycf=hello&a
  * if you need redis,shoud install phpredis extention(https://github.com/phpredis/phpredis)
 
 ## Beanchmarks
-1. ab -c100 -n1000 "http://yourhost/index.php"
+1. computer info: 
+CPU(s):               2
+CPU MHz：             2401.000
+Mem:                  4G
+
+
+2. ab -c100 -n1000 "http://yourhost/index.php"
+
+###php7 with php-fpm:
+```
+Server Software:        nginx/1.4.6
+Server Hostname:        ycf.kcloze.cn
+Server Port:            80
+
+Document Path:          /
+Document Length:        9 bytes
+
+Concurrency Level:      10
+Time taken for tests:   0.035 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      17900 bytes
+HTML transferred:       900 bytes
+Requests per second:    2862.38 [#/sec] (mean)
+Time per request:       3.494 [ms] (mean)
+Time per request:       0.349 [ms] (mean, across all concurrent requests)
+Transfer rate:          500.36 [Kbytes/sec] received
+
+
+```
+
+
+###php7 with swoole:
+```
+Server Software:        swoole-http-server
+Server Hostname:        localhost
+Server Port:            9501
+
+Document Path:          /
+Document Length:        9 bytes
+
+Concurrency Level:      10
+Time taken for tests:   0.017 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      15600 bytes
+HTML transferred:       900 bytes
+Requests per second:    5932.61 [#/sec] (mean)
+Time per request:       1.686 [ms] (mean)
+Time per request:       0.169 [ms] (mean, across all concurrent requests)
+Transfer rate:          903.80 [Kbytes/sec] received
+
+```
 
 ## Community
 mail: pei.greet@gmail.com
