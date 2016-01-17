@@ -63,11 +63,10 @@ class YcfCore {
 			}
 		}
 
-		$action = isset($_REQUEST['act']) ? $_REQUEST['act'] : 'hello';
-		$ycfName = isset($_REQUEST['ycf']) ? $_REQUEST['ycf'] : 'Hello';
-		$actionName = 'action' . ucfirst($action);
+		$router = self::route();
 		//route to service
-		$ycfName = "Ycf\Service\Ycf" . ucfirst($ycfName);
+		$actionName = 'action' . ucfirst($router['action']);
+		$ycfName = "Ycf\Service\Ycf" . ucfirst($router['controller']);
 		if (method_exists($ycfName, $actionName)) {
 			self::init();
 			$ycf = new $ycfName();
@@ -76,5 +75,26 @@ class YcfCore {
 			die("action not find");
 		}
 
+	}
+
+	static function route() {
+		$array = array('controller' => 'Hello', 'action' => 'hello');
+		if (!empty($_GET["ycf"])) {
+			$array['controller'] = $_GET["ycf"];
+		}
+		if (!empty($_GET["act"])) {
+			$array['action'] = $_GET["action"];
+		}
+		$uri = parse_url($_SERVER['REQUEST_URI']);
+		if (empty($uri['path']) or $uri['path'] == '/' or $uri['path'] == '/index.php') {
+			return $array;
+		}
+		$request = explode('/', trim($uri['path'], '/'), 3);
+		if (count($request) < 2) {
+			return $array;
+		}
+		$array['controller'] = $request[0];
+		$array['action'] = $request[1];
+		return $array;
 	}
 }
