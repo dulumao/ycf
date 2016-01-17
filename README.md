@@ -1,7 +1,7 @@
 ## ycf framework
 
 
-* a very simple PHP framework  for api or cli 
+* a very simple PHP framework  for api or cli or swoole
 
 
 ## Requirements
@@ -33,6 +33,11 @@ if set nginx as follow,url can be simple: http://youhost/hello/hello
 
 5.2 
 run in cli: /opt/php7/bin/php index.php ycf=hello act=hello
+
+5.3
+run with swoole: /opt/php7/bin/php server.php
+
+
 
 ## Documentation
  * in src/service/ ,you can add your business code here

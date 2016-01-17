@@ -47,8 +47,7 @@ class YcfCore {
 	}
 
 	static public function run() {
-
-		if (php_sapi_name() == "cli") {
+		if (php_sapi_name() == "cli" && !defined('SWOOLE')) {
 			$router = self::routeCli();
 		} else {
 			$router = self::route();
