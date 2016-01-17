@@ -49,7 +49,8 @@ run in php-fpm: Open your browser and enter http://youhost/index.php?ycf=hello&a
  * if you need redis,shoud install phpredis extention(https://github.com/phpredis/phpredis)
 
 ## Beanchmarks
-1. computer info: 
+####1. computer info: 
+```
 CPU(s):               2
 CPU MHz：             2401.000
 Mem:                  4G
@@ -62,9 +63,9 @@ pm.start_servers = 20
 swoole config:
 worker_num=4
 max_request=1000
+```
 
-
-2. ab -c100 -n1000 "http://yourhost/index.php"
+####2. ab -c100 -n1000 "http://yourhost/index.php"
 
 ###php7 with php-fpm:
 ```
