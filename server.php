@@ -17,7 +17,7 @@ class HttpServer {
 
 		$http->set(
 			array(
-				'worker_num' => 4,
+				'worker_num' => 8,
 				'daemonize' => false,
 				'max_request' => 1000,
 				'dispatch_mode' => 1,
