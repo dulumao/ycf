@@ -16,6 +16,8 @@ class YcfCore {
 	static function init($model = 0) {
 		self::$_settings = parse_ini_file("settings.ini.php", true);
 		self::$_log = new YcfLog();
+		register_shutdown_function(array('Ycf\Core\YcfCore', 'shutdown'));
+
 	}
 
 	static function load($_lib) {
@@ -64,12 +66,12 @@ class YcfCore {
 		} else {
 			echo ("action not find");
 		}
-		self::$_log->flush();
-		register_shutdown_function(array(self, 'shutdown'));
+		//self::$_log->flush();
 
 	}
 
-	static function shutdown() {
+	static public function shutdown() {
+		echo 'shutdown....';
 		self::$_log->flush();
 	}
 
@@ -116,6 +118,7 @@ class YcfCore {
 		if (!empty($_GET["act"])) {
 			$array['action'] = $_GET["act"];
 		}
+		$_SERVER['REQUEST_URI'] = $argv[0] . "?" . $argv[1] . "&" . $argv[2];
 		return $array;
 	}
 }

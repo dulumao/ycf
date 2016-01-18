@@ -10,8 +10,8 @@ class YcfHello {
 	}
 
 	public function actionLog() {
-		echo 'test log';
-		YcfCore::$_log->log('hello ycf', 'info', 'application');
+		YcfCore::$_log->log('hello ycf', 'info');
+		exit('test log');
 	}
 
 }
