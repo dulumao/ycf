@@ -10,23 +10,23 @@ namespace Ycf\Core;
 class YcfUtils {
 
 	/**
-	 *
-	 * 写日志
-	 */
-	static public function log($errmsg, $fileName) {
-		$path = ROOT_PATH . '/src/runtime/';
-		$filename = $path . $fileName . '.log';
-		$fp2 = fopen($filename, "a+") or die("Log fatal Error !");
-		fwrite($fp2, "Time: " . date('Y-m-d H:i:s') . '  ' . $errmsg . "\r\n");
-		fclose($fp2);
-	}
-
-	/**
 	 * 获得来源类型 post get
 	 *
 	 * @return unknown
 	 */
 	static public function method() {
 		return strtoupper(isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET');
+	}
+	/**
+	 * [exit 兼容swoole运行环境]
+	 * @param  [type] $msg [description]
+	 * @return [type]      [description]
+	 */
+	static function exit($msg) {
+		if (!defined('SWOOLE')) {
+			exit($msg);
+		} else {
+			throw new Swoole\ExitException($msg);
+		}
 	}
 }

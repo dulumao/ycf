@@ -3,6 +3,7 @@
 namespace Ycf\Core;
 
 use Ycf\Core\YcfDB;
+use Ycf\Core\YcfLog;
 use Ycf\Core\YcfRedis;
 
 class YcfCore {
@@ -10,10 +11,11 @@ class YcfCore {
 	static $_settings = array();
 	static $_db = null;
 	static $_redis = null;
+	static $_log = null;
 
 	static function init($model = 0) {
 		self::$_settings = parse_ini_file("settings.ini.php", true);
-
+		self::$_log = new YcfLog();
 	}
 
 	static function load($_lib) {
@@ -60,9 +62,15 @@ class YcfCore {
 			$ycf = new $ycfName();
 			$ycf->$actionName();
 		} else {
-			die("action not find");
+			echo ("action not find");
 		}
+		self::$_log->flush();
+		register_shutdown_function(array(self, 'shutdown'));
 
+	}
+
+	static function shutdown() {
+		self::$_log->flush();
 	}
 
 	static function route() {
