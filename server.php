@@ -10,7 +10,6 @@ class HttpServer {
 	public static $post;
 	public static $header;
 	public static $server;
-	private $application;
 
 	public function __construct() {
 		$http = new swoole_http_server("0.0.0.0", 9501);
@@ -62,7 +61,6 @@ class HttpServer {
 			ob_end_clean();
 			$response->end($result);
 			unset($result);
-			unset($this->application);
 		});
 
 		$http->start();
@@ -74,6 +72,8 @@ class HttpServer {
 		define('SWOOLE', true);
 		define('DS', DIRECTORY_SEPARATOR);
 		define('ROOT_PATH', realpath(dirname(__FILE__)) . DS);
+		define('YCF_BEGIN_TIME', microtime(true));
+
 		require 'vendor/autoload.php';
 
 	}

@@ -11,7 +11,6 @@ class YcfHello {
 
 	public function actionLog() {
 		YcfCore::$_log->log('hello ycf', 'info');
-		exit('test log');
 	}
 
 }

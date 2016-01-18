@@ -66,7 +66,7 @@ class YcfCore {
 		} else {
 			echo ("action not find");
 		}
-		//self::$_log->flush();
+		self::$_log && self::$_log->flush();
 
 	}
 
