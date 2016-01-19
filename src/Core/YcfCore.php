@@ -76,7 +76,7 @@ class YcfCore {
 	}
 
 	static function route() {
-		$array = array('service' => 'Hello', 'action' => 'hello');
+		$array = array('service' => 'Hello', 'action' => 'index');
 		if (!empty($_GET["ycf"])) {
 			$array['service'] = $_GET["ycf"];
 		}
@@ -102,7 +102,7 @@ class YcfCore {
 	 *
 	 */
 	static function routeCli() {
-		$array = array('service' => 'Hello', 'action' => 'hello');
+		$array = array('service' => 'Hello', 'action' => 'index');
 		global $argv;
 		foreach ($argv as $arg) {
 			$e = explode("=", $arg);

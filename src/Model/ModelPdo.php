@@ -20,7 +20,7 @@ class ModelPdo {
 	}
 
 	public function testQuery() {
-		return $this->_db->query("select  *  from pdo_test limit 10");
+		return $this->_db->query("select  *  from pdo_test limit 1");
 
 	}
 

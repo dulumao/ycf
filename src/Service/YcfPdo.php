@@ -10,7 +10,7 @@ class YcfPdo {
 		var_dump($result);
 
 		$result = $modelTest->testQuery();
-
+		var_dump($result);
 	}
 
 }
