@@ -53,7 +53,6 @@ run in php-fpm: Open your browser and enter http://youhost/index.php?ycf=hello&a
 
 
 
-
 ## Benchmarks
 ####1. computer and config info: 
 ```
@@ -82,9 +81,10 @@ NUMA node0 CPU(s):     0,1
 Mem:                  4G
 
 fpm config:
-pm = dynamic
+pm = static
 pm.max_children = 150
 pm.start_servers = 20
+pm.max_requests = 500
 
 swoole config:
 worker_num=8
@@ -267,6 +267,7 @@ Percentage of the requests served within a certain time (ms)
   99%    203
  100%    207 (longest request)
  ```
+ 
 
 ## Community
 mail: pei.greet@gmail.com

@@ -27,9 +27,10 @@ NUMA node0 CPU(s):     0,1
 Mem:                  4G
 
 fpm config:
-pm = dynamic
+pm = static
 pm.max_children = 150
 pm.start_servers = 20
+pm.max_requests = 500
 
 swoole config:
 worker_num=8
