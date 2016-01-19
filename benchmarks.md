@@ -1,52 +1,3 @@
-## ycf framework
-
-
-* a very simple PHP framework  for api or cli or swoole
-
-
-## Requirements
-
-* PHP 5.3+
-
-
-## Installation
-
-1. composer create-project --prefer-dist kcloze/ycf your-app
-2. cd src/runtime and chmod -R 777 runtime/
-3. edit src/settings.ini.php for mysql config or redis,add test table(https://github.com/kcloze/ycf/blob/master/pdo_test.sql)
-
-## How to run
-
-###php-fpm  
-run in php-fpm: Open your browser and enter http://youhost/index.php?ycf=hello&act=hello
-
-5.1.2 if set nginx as follow,url can be simple: http://youhost/hello/hello
-
-```
-                location / {
-                        if (!-e $request_filename){
-                                 rewrite ^/(.*) /index.php last;
-                         }
-                }
-
-```
-
-###cli
-5.2 run in cli: /opt/php7/bin/php index.php ycf=hello act=hello
-
-###swoole
-5.3 run with swoole: /opt/php7/bin/php server.php
-
-
-
-## Documentation
- * in src/service/ ,you can add your business code here
- * Naming Conventions: 
- * ---service class name :YcfYourname.php
- * ---method name : public static function actionYourname()
- * [DB Class Use](DB_README.md)
- * if you need redis,shoud install phpredis extention(https://github.com/phpredis/phpredis)
-
 
 ## Benchmarks
 ####1. computer and config info: 
@@ -257,11 +208,3 @@ Percentage of the requests served within a certain time (ms)
   99%    103
  100%    106 (longest request)
  ```
-## Community
-mail: pei.greet@gmail.com
-qq群: 141059677
-
-
-##License
-The ycf framework is open-sourced software licensed under the MIT license
-
