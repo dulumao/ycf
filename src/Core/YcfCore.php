@@ -35,7 +35,7 @@ class YcfCore {
 
 	static public function getDbInstance() {
 		// Create Mysql Client instance with you configuration settings
-		if (self::$_db == '') {
+		if (self::$_db == null) {
 			self::$_db = new YcfDB(self::$_settings['Mysql']);
 		}
 		return self::$_db;

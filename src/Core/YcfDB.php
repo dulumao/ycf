@@ -226,6 +226,71 @@ class YcfDB {
 		return $this->sQuery->fetchColumn();
 	}
 	/**
+	 * [insert insert自动绑定字段参数]
+	 * @param  [type] $tableName [description]
+	 * @param  [type] $data      [description]
+	 * @return [type]            [description]
+	 */
+	public function insert($tableName, $data) {
+		$columnL = "";
+		$columnR = ":";
+
+		if (is_array($data)) {
+			$keys = array_keys($data);
+			$columnL .= implode(",", $keys);
+			$columnR .= implode(",:", $keys);
+		} else {
+			return false;
+		}
+		$insert = $this->query("INSERT INTO " . $tableName . " ( " . $columnL . ") VALUES ( " . $columnR . " ) ", $data);
+		if ($insert > 0) {
+			return $this->lastInsertId();
+		} else {
+			return false;
+		}
+	}
+	/**
+	 * [update update自动绑定字段参数]
+	 * @param  [type] $tableName [description]
+	 * @param  [type] $udate     [description]
+	 * @param  [type] $where     [description]
+	 * @return [type]            [description]
+	 */
+	public function update($tableName, $udate, $where) {
+		$columnL = " ";
+		$columnR = " ";
+		if (is_array($udate)) {
+			$i = 0;
+			foreach ($udate as $key => $value) {
+				$i++;
+				$columnL .= $key . " = :" . $key;
+				if ($i < count($udate)) {
+					$columnL .= ", ";
+				}
+			}
+		} else {
+			return false;
+		}
+		if (is_array($where)) {
+			$i = 0;
+			foreach ($where as $key => $value) {
+				$i++;
+				$columnR .= $key . " = :" . $key;
+				if ($i < count($where)) {
+					$columnR .= " and ";
+				}
+			}
+		} else {
+			return false;
+		}
+		//echo "UPDATE ".$tableName." SET ".$columnL." WHERE ".$columnR;exit;
+		$data = array_merge($udate, $where);
+		$update = $this->query("UPDATE " . $tableName . " SET " . $columnL . " WHERE " . $columnR, $data);
+		return $update;
+
+	}
+
+	/**
 	 * Writes the log and returns the exception
 	 *
 	 * @param  string $message
