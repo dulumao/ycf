@@ -4,7 +4,7 @@
 * a very simple,micro PHP framework 
 * it can be run in Cli,PHP-FPM,Swoole
 * composer install
-* a solution based micro-services and blazing fast APIs.
+* a solution for micro-services and blazing fast APIs.
 
 
 ## Requirements
@@ -53,6 +53,7 @@ run in php-fpm: Open your browser and enter http://youhost/index.php?ycf=hello&a
 
 
 
+
 ## Benchmarks
 ####1. computer and config info: 
 ```
@@ -97,43 +98,42 @@ max_request=1000
 code in here:(https://github.com/kcloze/ycf/blob/master/src%2FService%2FYcfHello.php)
 
 ###php7 with php-fpm:
-```
 Server Software:        nginx/1.6.3
 Server Hostname:        192.168.10.244
 Server Port:            80
 
-Document Path:          /kcloze/index.php
-Document Length:        15 bytes
+Document Path:          /kcloze/index.php?ycf=hello&act=index
+Document Length:        21 bytes
 
-Concurrency Level:      200
-Time taken for tests:   0.803 seconds
+Concurrency Level:      100
+Time taken for tests:   0.228 seconds
 Complete requests:      1000
 Failed requests:        0
 Write errors:           0
-Total transferred:      176000 bytes
-HTML transferred:       15000 bytes
-Requests per second:    1245.99 [#/sec] (mean)
-Time per request:       160.515 [ms] (mean)
-Time per request:       0.803 [ms] (mean, across all concurrent requests)
-Transfer rate:          214.15 [Kbytes/sec] received
+Total transferred:      182182 bytes
+HTML transferred:       21021 bytes
+Requests per second:    4393.92 [#/sec] (mean)
+Time per request:       22.759 [ms] (mean)
+Time per request:       0.228 [ms] (mean, across all concurrent requests)
+Transfer rate:          781.73 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.4      0       2
-Processing:     3  144  42.4    154     286
-Waiting:        3  144  42.4    154     286
-Total:          4  144  42.2    154     286
+Connect:        0    0   0.2      0       1
+Processing:     3   22   2.7     22      28
+Waiting:        3   22   2.7     22      28
+Total:          3   22   2.5     22      28
 
 Percentage of the requests served within a certain time (ms)
-  50%    154
-  66%    158
-  75%    162
-  80%    165
-  90%    179
-  95%    186
-  98%    191
-  99%    203
- 100%    286 (longest request)
+  50%     22
+  66%     22
+  75%     22
+  80%     22
+  90%     22
+  95%     22
+  98%     25
+  99%     27
+ 100%     28 (longest request)
 ```
 
 ###php7 with swoole-http-server:
@@ -142,38 +142,39 @@ Server Software:        swoole-http-server
 Server Hostname:        192.168.10.244
 Server Port:            9501
 
-Document Path:          /kcloze/index.php
-Document Length:        15 bytes
+Document Path:          /kcloze/index.php?ycf=hello&act=index
+Document Length:        9 bytes
 
 Concurrency Level:      200
-Time taken for tests:   0.034 seconds
+Time taken for tests:   0.054 seconds
 Complete requests:      1000
 Failed requests:        0
 Write errors:           0
-Total transferred:      163163 bytes
-HTML transferred:       15015 bytes
-Requests per second:    29183.45 [#/sec] (mean)
-Time per request:       6.853 [ms] (mean)
-Time per request:       0.034 [ms] (mean, across all concurrent requests)
-Transfer rate:          4650.06 [Kbytes/sec] received
+Total transferred:      156000 bytes
+HTML transferred:       9000 bytes
+Requests per second:    18540.49 [#/sec] (mean)
+Time per request:       10.787 [ms] (mean)
+Time per request:       0.054 [ms] (mean, across all concurrent requests)
+Transfer rate:          2824.53 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    1   0.3      1       1
-Processing:     2    6   1.7      5      10
-Waiting:        2    5   1.7      5      10
-Total:          3    6   1.8      6      11
+Connect:        0    0   0.6      0       2
+Processing:     0    9   7.6      7      28
+Waiting:        0    9   7.6      7      28
+Total:          0   10   7.6      8      29
 
 Percentage of the requests served within a certain time (ms)
-  50%      6
-  66%      6
-  75%      7
-  80%      7
-  90%      9
-  95%     10
-  98%     11
-  99%     11
- 100%     11 (longest request)
+  50%      8
+  66%     12
+  75%     15
+  80%     17
+  90%     22
+  95%     25
+  98%     27
+  99%     28
+ 100%     29 (longest request)
+
 ```
 
 ##Benchmarks:insert one record and select on record
@@ -183,42 +184,44 @@ code in here:(https://github.com/kcloze/ycf/blob/master/src%2FService%2FYcfPdo.p
 
 ###php7 with php-fpm:
 ```
+
 Server Software:        nginx/1.6.3
 Server Hostname:        192.168.10.244
 Server Port:            80
 
 Document Path:          /kcloze/index.php?ycf=pdo&act=test
-Document Length:        174 bytes
+Document Length:        175 bytes
 
 Concurrency Level:      100
-Time taken for tests:   1.108 seconds
+Time taken for tests:   0.405 seconds
 Complete requests:      1000
 Failed requests:        0
 Write errors:           0
-Total transferred:      335000 bytes
-HTML transferred:       174000 bytes
-Requests per second:    902.44 [#/sec] (mean)
-Time per request:       110.810 [ms] (mean)
-Time per request:       1.108 [ms] (mean, across all concurrent requests)
-Transfer rate:          295.23 [Kbytes/sec] received
+Total transferred:      336000 bytes
+HTML transferred:       175000 bytes
+Requests per second:    2469.77 [#/sec] (mean)
+Time per request:       40.490 [ms] (mean)
+Time per request:       0.405 [ms] (mean, across all concurrent requests)
+Transfer rate:          810.39 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.5      0       3
-Processing:    16  106  30.6    105     289
-Waiting:       16  105  30.6    105     289
-Total:         17  106  30.5    105     289
+Connect:        0    0   0.2      0       1
+Processing:     9   38   6.4     39      78
+Waiting:        9   38   6.4     39      78
+Total:         10   38   6.3     39      78
 
 Percentage of the requests served within a certain time (ms)
-  50%    105
-  66%    114
-  75%    118
-  80%    120
-  90%    136
-  95%    157
-  98%    199
-  99%    206
- 100%    289 (longest request)
+  50%     39
+  66%     41
+  75%     42
+  80%     43
+  90%     44
+  95%     46
+  98%     49
+  99%     52
+ 100%     78 (longest request)
+ 
 ```
 
 
@@ -226,44 +229,44 @@ Percentage of the requests served within a certain time (ms)
 ###php7 with swoole-http-server:
 
 ```
-Server Software:        swoole-http-server
+SServer Software:        swoole-http-server
 Server Hostname:        192.168.10.244
 Server Port:            9501
 
 Document Path:          /kcloze/index.php?ycf=pdo&act=test
 Document Length:        163 bytes
 
-Concurrency Level:      100
-Time taken for tests:   0.596 seconds
+Concurrency Level:      200
+Time taken for tests:   0.915 seconds
 Complete requests:      1000
 Failed requests:        0
 Write errors:           0
 Total transferred:      312000 bytes
 HTML transferred:       163000 bytes
-Requests per second:    1676.47 [#/sec] (mean)
-Time per request:       59.649 [ms] (mean)
-Time per request:       0.596 [ms] (mean, across all concurrent requests)
-Transfer rate:          510.80 [Kbytes/sec] received
+Requests per second:    1093.10 [#/sec] (mean)
+Time per request:       182.967 [ms] (mean)
+Time per request:       0.915 [ms] (mean, across all concurrent requests)
+Transfer rate:          333.05 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.2      0       1
-Processing:     5   56  19.4     54     106
-Waiting:        5   56  19.4     54     106
-Total:          6   57  19.3     54     106
+Connect:        0    0   0.7      0       2
+Processing:     7  164  42.0    179     207
+Waiting:        7  164  42.0    179     207
+Total:          9  165  41.5    179     207
 
 Percentage of the requests served within a certain time (ms)
-  50%     54
-  66%     63
-  75%     66
-  80%     69
-  90%     86
-  95%     95
-  98%    101
-  99%    103
- 100%    106 (longest request)
+  50%    179
+  66%    185
+  75%    187
+  80%    189
+  90%    192
+  95%    195
+  98%    200
+  99%    203
+ 100%    207 (longest request)
  ```
-
+ 
 ## Community
 mail: pei.greet@gmail.com
 qq群: 141059677
