@@ -1,7 +1,10 @@
 ## ycf framework
 
 
-* a very simple PHP framework  for api or cli or swoole
+* a very simple,micro PHP framework 
+* it can be run in Cli,PHP-FPM,Swoole
+* composer install
+* a solution based micro-services and blazing fast APIs.
 
 
 ## Requirements
@@ -260,7 +263,7 @@ Percentage of the requests served within a certain time (ms)
   99%    103
  100%    106 (longest request)
  ```
- 
+
 ## Community
 mail: pei.greet@gmail.com
 qq群: 141059677
