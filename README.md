@@ -49,6 +49,7 @@ run in php-fpm: Open your browser and enter http://youhost/index.php?ycf=hello&a
  * if you need redis,shoud install phpredis extention(https://github.com/phpredis/phpredis)
 
 
+
 ## Benchmarks
 ####1. computer and config info: 
 ```
@@ -90,7 +91,7 @@ max_request=1000
 
 ##Benchmarks:echo hello world
 ####2. ab -c100 -n1000 "http://192.168.10.244/kcloze/index.php?ycf=hello&act=index"
-
+code in here:(https://github.com/kcloze/ycf/blob/master/src%2FService%2FYcfHello.php)
 
 ###php7 with php-fpm:
 ```
@@ -175,6 +176,7 @@ Percentage of the requests served within a certain time (ms)
 ##Benchmarks:insert one record and select on record
 
 ####2. ab -c100 -n1000 "http://192.168.10.244/kcloze/index.php?ycf=pdo&act=test"
+code in here:(https://github.com/kcloze/ycf/blob/master/src%2FService%2FYcfPdo.php)
 
 ###php7 with php-fpm:
 ```
@@ -258,6 +260,7 @@ Percentage of the requests served within a certain time (ms)
   99%    103
  100%    106 (longest request)
  ```
+ 
 ## Community
 mail: pei.greet@gmail.com
 qq群: 141059677
